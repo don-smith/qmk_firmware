@@ -18,6 +18,7 @@ extern keymap_config_t keymap_config;
 #define _LOWER 1
 #define _RAISE 2
 #define _PLOVER 3
+#define _I3 4
 #define _ADJUST 16
 
 enum planck_keycodes {
@@ -25,7 +26,6 @@ enum planck_keycodes {
   PLOVER,
   LOWER,
   RAISE,
-  BACKLIT,
   EXT_PLV
 };
 
@@ -38,27 +38,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Ctrl |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Esc  | GUI  | Alt  |Lower |    Space    |Raise |      |      |      |      |
+ * | Esc  | Caps | GUI  | Alt  |Lower |    Space    |Raise |Leader|      |      |  i3  |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = {
   {KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC},
   {KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT},
   {KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT },
-  {BACKLIT, KC_ESC,  KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   _______, _______, _______, _______}
+  {KC_ESC,  KC_CAPS, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEAD, _______, _______, MO(_I3)}
 },
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
@@ -74,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Raise
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
@@ -92,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * | Reset|      |      |      |      |      |      |      |      |      |      |  Del |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Aud on|Audoff|AGnorm|AGswap|Qwerty|Plover| Left | Down |  Up  |Right |      |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
@@ -107,12 +107,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 },
 
+/* i3 layer
+ * ,-----------------------------------------------------------------------------------.
+ * |      |                             Go to 1 - 9                             |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |                            Move to 1 - 9                            |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |                             Make 1 - 9                              |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_I3] = {
+  {_______, M(1),    M(2),    M(3),    M(4),    M(5),    M(6),    M(7),    M(8),    M(9),    _______, _______},
+  {_______, M(11),   M(12),   M(13),   M(14),   M(15),   M(16),   M(17),   M(18),   M(19),   _______, _______},
+  {_______, M(21),   M(22),   M(23),   M(24),   M(25),   M(26),   M(27),   _______, _______, _______, _______},
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
+},
+
 /* Plover layer (http://opensteno.org)
  * ,-----------------------------------------------------------------------------------.
  * |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |   #  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   S  |   T  |   P  |   H  |   *  |   *  |   F  |   P  |   L  |   T  |   D  |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |TogOut|   S  |   K  |   W  |   R  |   *  |   *  |   R  |   B  |   G  |   S  |   Z  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Exit |      |      |   A  |   O  |             |   E  |   U  |      |      |      |
@@ -175,17 +193,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case BACKLIT:
-      if (record->event.pressed) {
-        register_code(KC_RSFT);
-        #ifdef BACKLIGHT_ENABLE
-          backlight_step();
-        #endif
-      } else {
-        unregister_code(KC_RSFT);
-      }
-      return false;
-      break;
     case PLOVER:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
@@ -218,10 +225,161 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    /* Yes, I know. Trust me, I don't like this function anymore than you do.
+     * It must be the worst function I've written in years (probably since the
+     * last time I wrote C). I'll refactor it later after I'm more familiar with
+     * this codebase and I've figured out how to translate a uint8_t to a keycode.
+     * For now, it works.
+     */
+
+    if (!(record->event.pressed)) {
+        return MACRO_NONE;
+    }
+    switch (id) {
+        // Go to id
+        case 1:
+            return MACRO (D(LALT), T(1), U(LALT), END);
+        case 2:
+            return MACRO (D(LALT), T(2), U(LALT), END);
+        case 3:
+            return MACRO (D(LALT), T(3), U(LALT), END);
+        case 4:
+            return MACRO (D(LALT), T(4), U(LALT), END);
+        case 5:
+            return MACRO (D(LALT), T(5), U(LALT), END);
+        case 6:
+            return MACRO (D(LALT), T(6), U(LALT), END);
+        case 7:
+            return MACRO (D(LALT), T(7), U(LALT), END);
+        case 8:
+            return MACRO (D(LALT), T(8), U(LALT), END);
+        case 9:
+            return MACRO (D(LALT), T(9), U(LALT), END);
+
+        // Move to id
+        case 11:
+            return MACRO( D(LALT), D(LSFT), T(1), U(LSFT), U(LALT), END );
+        case 12:
+            return MACRO( D(LALT), D(LSFT), T(2), U(LSFT), U(LALT), END );
+        case 13:
+            return MACRO( D(LALT), D(LSFT), T(3), U(LSFT), U(LALT), END );
+        case 14:
+            return MACRO( D(LALT), D(LSFT), T(4), U(LSFT), U(LALT), END );
+        case 15:
+            return MACRO( D(LALT), D(LSFT), T(5), U(LSFT), U(LALT), END );
+        case 16:
+            return MACRO( D(LALT), D(LSFT), T(6), U(LSFT), U(LALT), END );
+        case 17:
+            return MACRO( D(LALT), D(LSFT), T(7), U(LSFT), U(LALT), END );
+        case 18:
+            return MACRO( D(LALT), D(LSFT), T(8), U(LSFT), U(LALT), END );
+        case 19:
+            return MACRO( D(LALT), D(LSFT), T(9), U(LSFT), U(LALT), END );
+
+        // Make current id
+        case 21:
+            return MACRO(
+                W(100), D(LALT),
+                // move all current windows to 8
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                // Go to target
+                T(1),
+                // Move all windows to 9
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                // Go to 8
+                T(8),
+                // Move all windows to target
+                D(LSFT), T(1), T(1), T(1), T(1), T(1), U(LSFT),
+                // Go to target
+                T(1),
+                // Go to 9
+                T(9),
+                U(LALT), END
+            );
+        case 22:
+            return MACRO(
+                W(100), D(LALT),
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                T(2),
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                T(8),
+                D(LSFT), T(2), T(2), T(2), T(2), T(2), U(LSFT),
+                T(2), T(9), U(LALT), END
+            );
+        case 23:
+            return MACRO(
+                W(100), D(LALT),
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                T(3),
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                T(8),
+                D(LSFT), T(3), T(3), T(3), T(3), T(3), U(LSFT),
+                T(3), T(9), U(LALT), END
+            );
+        case 24:
+            return MACRO(
+                W(100), D(LALT),
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                T(4),
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                T(8),
+                D(LSFT), T(4), T(4), T(4), T(4), T(4), U(LSFT),
+                T(4), T(9), U(LALT), END
+            );
+        case 25:
+            return MACRO(
+                W(100), D(LALT),
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                T(5),
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                T(8),
+                D(LSFT), T(5), T(5), T(5), T(5), T(5), U(LSFT),
+                T(5), T(9), U(LALT), END
+            );
+        case 26:
+            return MACRO(
+                W(100), D(LALT),
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                T(6),
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                T(8),
+                D(LSFT), T(6), T(6), T(6), T(6), T(6), U(LSFT),
+                T(6), T(9), U(LALT), END
+            );
+        case 27:
+            return MACRO(
+                W(100), D(LALT),
+                D(LSFT), T(8), T(8), T(8), T(8), T(8), U(LSFT),
+                T(7),
+                D(LSFT), T(9), T(9), T(9), T(9), T(9), U(LSFT),
+                T(8),
+                D(LSFT), T(7), T(7), T(7), T(7), T(7), U(LSFT),
+                T(7), T(9), U(LALT), END
+            );
+    }
+    return MACRO_NONE;
+}
+
 void matrix_init_user(void) {
     #ifdef AUDIO_ENABLE
         startup_user();
     #endif
+}
+
+LEADER_EXTERNS();
+
+void matrix_scan_user (void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_F) {
+      register_code(KC_S);
+      unregister_code(KC_S);
+    }
+  }
 }
 
 #ifdef AUDIO_ENABLE
