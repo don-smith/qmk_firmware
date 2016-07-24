@@ -146,14 +146,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 #ifdef AUDIO_ENABLE
-
-float tone_startup[][2]    = SONG(STARTUP_SOUND);
-float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
-float tone_plover[][2]     = SONG(PLOVER_SOUND);
-float tone_plover_gb[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
-
-float tone_goodbye[][2] = SONG(GOODBYE_SOUND);
+float tone_startup[][2]   = SONG(STARTUP_SOUND);
+float tone_qwerty[][2]    = SONG(QWERTY_SOUND);
+float tone_plover[][2]    = SONG(PLOVER_SOUND);
+float tone_plover_gb[][2] = SONG(PLOVER_GOODBYE_SOUND);
+float music_scale[][2]    = SONG(MUSIC_SCALE_SOUND);
+float tone_goodbye[][2]   = SONG(GOODBYE_SOUND);
 #endif
 
 void persistant_default_layer_set(uint16_t default_layer) {
