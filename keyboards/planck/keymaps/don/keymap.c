@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* i3 layer
  * ,-----------------------------------------------------------------------------------.
- * |      |                             Go to 1 - 9                             |      |
+ * |      |                             Go to 1 - 9                             | Exit |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |                            Move to 1 - 9                            |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_I3] = {
-  {_______, M(1),    M(2),    M(3),    M(4),    M(5),    M(6),    M(7),    M(8),    M(9),    _______, _______},
+  {_______, M(1),    M(2),    M(3),    M(4),    M(5),    M(6),    M(7),    M(8),    M(9),    _______, M(0)},
   {_______, M(11),   M(12),   M(13),   M(14),   M(15),   M(16),   M(17),   M(18),   M(19),   _______, _______},
   {_______, M(21),   M(22),   M(23),   M(24),   M(25),   M(26),   M(27),   _______, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
@@ -238,25 +238,28 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
         return MACRO_NONE;
     }
     switch (id) {
+        case 0:
+            // Exit i3
+            return MACRO (D(LALT), D(LSFT), T(E), U(LSFT), U(LALT), END);
         // Go to id
         case 1:
-            return MACRO (D(LALT), T(1), U(LALT), END);
+            return MACRO( D(LALT), T(1), U(LALT), END );
         case 2:
-            return MACRO (D(LALT), T(2), U(LALT), END);
+            return MACRO( D(LALT), T(2), U(LALT), END );
         case 3:
-            return MACRO (D(LALT), T(3), U(LALT), END);
+            return MACRO( D(LALT), T(3), U(LALT), END );
         case 4:
-            return MACRO (D(LALT), T(4), U(LALT), END);
+            return MACRO( D(LALT), T(4), U(LALT), END );
         case 5:
-            return MACRO (D(LALT), T(5), U(LALT), END);
+            return MACRO( D(LALT), T(5), U(LALT), END );
         case 6:
-            return MACRO (D(LALT), T(6), U(LALT), END);
+            return MACRO( D(LALT), T(6), U(LALT), END );
         case 7:
-            return MACRO (D(LALT), T(7), U(LALT), END);
+            return MACRO( D(LALT), T(7), U(LALT), END );
         case 8:
-            return MACRO (D(LALT), T(8), U(LALT), END);
+            return MACRO( D(LALT), T(8), U(LALT), END );
         case 9:
-            return MACRO (D(LALT), T(9), U(LALT), END);
+            return MACRO( D(LALT), T(9), U(LALT), END );
 
         // Move to id
         case 11:
