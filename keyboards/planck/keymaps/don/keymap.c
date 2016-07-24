@@ -156,7 +156,6 @@ float music_scale[][2]     = SONG(MUSIC_SCALE_SOUND);
 float tone_goodbye[][2] = SONG(GOODBYE_SOUND);
 #endif
 
-
 void persistant_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
@@ -238,10 +237,11 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
         return MACRO_NONE;
     }
     switch (id) {
+        // Exit i3
         case 0:
-            // Exit i3
             return MACRO (D(LALT), D(LSFT), T(E), U(LSFT), U(LALT), END);
-        // Go to id
+
+        // Go to window number id
         case 1:
             return MACRO( D(LALT), T(1), U(LALT), END );
         case 2:
@@ -261,7 +261,7 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
         case 9:
             return MACRO( D(LALT), T(9), U(LALT), END );
 
-        // Move to id
+        // Move current windows to id
         case 11:
             return MACRO( D(LALT), D(LSFT), T(1), U(LSFT), U(LALT), END );
         case 12:
@@ -281,7 +281,7 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
         case 19:
             return MACRO( D(LALT), D(LSFT), T(9), U(LSFT), U(LALT), END );
 
-        // Make current id
+        // Give current windows the number id
         case 21:
             return MACRO(
                 W(100), D(LALT),
