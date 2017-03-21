@@ -258,6 +258,8 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
             return MACRO( D(LALT), T(8), U(LALT), END );
         case 9:
             return MACRO( D(LALT), T(9), U(LALT), END );
+        case 10:
+            return MACRO( D(LALT), T(0), U(LALT), END );
 
         // Move current windows to id
         case 11:
@@ -278,6 +280,8 @@ const macro_t *action_get_macro (keyrecord_t *record, uint8_t id, uint8_t opt)
             return MACRO( D(LALT), D(LSFT), T(8), U(LSFT), U(LALT), END );
         case 19:
             return MACRO( D(LALT), D(LSFT), T(9), U(LSFT), U(LALT), END );
+        case 20:
+            return MACRO( D(LALT), D(LSFT), T(0), U(LSFT), U(LALT), END );
 
         // Give current windows the number id
         case 21:
